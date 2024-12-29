@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحميل فيديو من مواقع مختلفة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+            margin-top: 20px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>تحميل فيديو من مواقع مختلفة</h1>
+    <p>أدخل رابط الفيديو من فيسبوك، تيكتوك، يوتيوب أو إنستغرام لتحميله</p>
+    
+    <!-- نموذج لإدخال رابط الفيديو -->
+    <input type="text" id="videoUrl" placeholder="أدخل رابط الفيديو من فيسبوك، تيكتوك، يوتيوب أو إنستغرام" />
+    <button onclick="downloadVideo()">تحميل الفيديو</button>
+    
+    <script>
+        function downloadVideo() {
+            var url = document.getElementById('videoUrl').value;
+            if (url === "") {
+                alert("من فضلك أدخل رابط الفيديو");
+                return;
+            }
+
+            // التأكد من نوع الموقع وإعادة توجيه المستخدم للموقع المناسب
+            if (url.includes("facebook.com")) {
+                window.open("https://fbdown.net/?url=" + encodeURIComponent(url), "_blank");
+            } else if (url.includes("tiktok.com")) {
+                window.open("https://ttdownloader.com/?url=" + encodeURIComponent(url), "_blank");
+            } else if (url.includes("youtube.com") || url.includes("youtu.be")) {
+                window.open("https://savefrom.net/?url=" + encodeURIComponent(url), "_blank");
+            } else if (url.includes("instagram.com")) {
+                window.open("https://www.instadownloader.co/?url=" + encodeURIComponent(url), "_blank");
+            } else {
+                alert("الرجاء إدخال رابط فيديو صالح من فيسبوك، تيكتوك، يوتيوب أو إنستغرام");
+            }
+        }
+    </script>
+
+</body>
+</html>
